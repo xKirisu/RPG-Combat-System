@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class Character : Unit
 {
-    public override IEnumerator TakeAction()
+    Move MOVE;
+    static bool ButtonPressedFlag = false;
+    public override IEnumerator TakeAction(List<Unit> queue, PanelManager panel)
     {
-        return base.TakeAction();
+        panel.showSpellPanel(Moves, this);
+
+        yield return base.TakeAction(queue, panel);
+
+        ButtonPressedFlag = false;
+
+        yield return new WaitUntil(() => ButtonPressedFlag);
+
+        //turn off panel
+        //cast
+    }
+
+    public void ButtonPress(int index)
+    {
+        MOVE = Moves[index];
+        ButtonPressedFlag = true;
     }
 }

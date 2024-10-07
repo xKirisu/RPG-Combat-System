@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+enum Tactic
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Random, Offensive, Deffensive, Executive
+}
+public class Enemy : Unit
+{
+    [SerializeField] Tactic Tactic = Tactic.Random;
 
-    // Update is called once per frame
-    void Update()
+    public override IEnumerator TakeAction(List<Unit> queue, PanelManager panel)
     {
-        
+        panel.hideSpellPanel();
+
+        return base.TakeAction(queue, panel);
+
+
     }
 }
