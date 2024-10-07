@@ -12,14 +12,14 @@ enum DamageType
 }
 public class Move : MonoBehaviour
 {
-    [SerializeField] AnimationClip animation;
+    [SerializeField] AnimationClip Animation;
     [SerializeField] float Factor;
     [SerializeField] float Cost;
     [SerializeField] bool IsOffensive;
     static float MoveAwaiter = 0.5f;
     private void Start()
     {
-        animation = GetComponent<AnimationClip>();
+        Animation = GetComponent<AnimationClip>();
     }
     static short DamageCalc()
     {
